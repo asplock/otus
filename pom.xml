@@ -6,22 +6,12 @@
 
   <groupId>ru.otus</groupId>
   <artifactId>homeworks</artifactId>
-  <version>1.0</version>
+  <version>2.0.1</version>
   <packaging>pom</packaging>
 
   <modules>
     <module>homework-01</module>
     <module>homework-02</module>
   </modules>
-
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.apache.commons</groupId>
-        <artifactId>commons-lang3</artifactId>
-        <version>3.4</version>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
 
 </project>
