@@ -17,7 +17,7 @@ public class App {
 
   private static final String PATTERN = "{} size is {} bytes";
 
-  private static final String COLLECTION_PATTERN = "{} size changes: {}";
+  private static final String COLLECTION_PATTERN = "{} size changes: ~ {} bytes per element";
 
   public static void main(String... args) {
     MemoryCounter counter = new MemoryCounter();

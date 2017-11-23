@@ -24,16 +24,16 @@ public class MemoryCounter {
     return memory / list.size();
   }
 
-  public <T> Map<Integer, Long> countContainerMemoryChanges(Supplier<T> objectSupplier,
+  public <T> double countContainerMemoryChanges(Supplier<T> objectSupplier,
                                                             Supplier<Collection<T>> collectionSupplier) {
     long objectMemory = countObjectMemory(objectSupplier, 100_000);
-    Map<Integer, Long> result = new LinkedHashMap<>();
-    Stream.of(10, 100, 1_000, 10_000, 100_000).forEach(size -> {
+    return Stream.of(100, 1_000, 10_000, 100_000).mapToLong(size -> {
       Collection<T> collection = collectionSupplier.get();
       long fullMemory = fillAndCount(objectSupplier, collection, size);
-      result.put(collection.size(), fullMemory - collection.size() * objectMemory);
-    });
-    return result;
+      long containerMemory = fullMemory - collection.size() * objectMemory;
+      log.info("Memory at {} elements is {}", collection.size(), containerMemory);
+      return containerMemory / size;
+    }).average().orElse(0);
   }
 
   private <T> long fillAndCount(Supplier<T> supplier, Collection<T> collection, int itemCount) {
