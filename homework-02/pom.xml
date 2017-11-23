@@ -45,7 +45,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>ru.otus.homework01.App</mainClass>
+              <mainClass>ru.otus.homework02.App</mainClass>
             </manifest>
           </archive>
           <finalName>homework-02</finalName>
